@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using TicketsBasket.Models.Domain;
 
-namespace TicketsBasket.Models.Date {
-    class ApplicationDbContext : DbContext{
+namespace TicketsBasket.Models.Data {
+    public class ApplicationDbContext : DbContext{
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options) {
 
@@ -69,6 +69,11 @@ namespace TicketsBasket.Models.Date {
 
             modelBuilder.Entity<Event>()
                 .HasMany(p => p.Tickets)
+                .WithOne(p => p.Event)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Event>()
+                .HasMany(p => p.WishListEvents)
                 .WithOne(p => p.Event)
                 .OnDelete(DeleteBehavior.NoAction);
 

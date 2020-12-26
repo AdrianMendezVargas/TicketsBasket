@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,6 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TicketsBasket.Api.Extensions;
+using TicketsBasket.Models.Data;
 
 namespace TicketsBasket.Api {
     public class Startup {
@@ -23,15 +26,15 @@ namespace TicketsBasket.Api {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
-            services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
-                .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C" , options));
 
-            //Configuramos el Cors
-            services.AddCors(options => {
-                options.AddPolicy("CorsPolicy" , policy => {
-                    policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-                });
-            });
+            services.AddB2CAuthentication(Configuration);
+
+            services.AddApplicationDatabaseContext(Configuration);
+            services.AddUnitOfwork();
+            services.AddBussinessServices();
+            services.ConfigureCors();
+            services.ConfigureIdentityOptions();
+            services.AddHttpContextAccessor();
 
             services.AddControllers();
         }

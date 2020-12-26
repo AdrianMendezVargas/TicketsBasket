@@ -31,7 +31,8 @@ namespace TicketsBasket.Blazor
             {
                 builder.Configuration.Bind("AzureAdB2C", options.ProviderOptions.Authentication);
                 //Add my Azure scope
-                options.ProviderOptions.DefaultAccessTokenScopes.Add(builder.Configuration["AzureAdB2C:Scope"]);
+                options.ProviderOptions.DefaultAccessTokenScopes.Add("offline_access");
+                options.ProviderOptions.DefaultAccessTokenScopes.Add("openid");
             });
 
             await builder.Build().RunAsync();
