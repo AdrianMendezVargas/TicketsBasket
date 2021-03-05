@@ -14,6 +14,7 @@ using TicketsBasket.Models.Data;
 using TicketsBasket.Repositories;
 using TicketsBasket.Services;
 using Microsoft.Identity.Web;
+using TicketsBasket.Services.Storage;
 
 namespace TicketsBasket.Api.Extensions {
     public static class ServiceExtensions {
@@ -47,8 +48,8 @@ namespace TicketsBasket.Api.Extensions {
                 var identityOptions = new IdentityOptions();
 
                 if (context.User.Identity.IsAuthenticated) {
-                    string userId = context.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                    identityOptions.UserId = userId;
+
+                    identityOptions.User = context.User;
                     //TODO: Configure other identity properties
                 }
                 return identityOptions;
@@ -57,6 +58,18 @@ namespace TicketsBasket.Api.Extensions {
 
         public static void AddBussinessServices(this IServiceCollection services) {
             services.AddScoped<IUserProfilesService , UserProfilesService>();
+        }
+
+        public static void AddAzureStorageOptions(this IServiceCollection services, IConfiguration configuration) {
+
+            services.AddScoped(sp => configuration.GetSection("AzureStorageSettings").Get<AzureStorageOptions>());
+
+        }
+
+        public static void AddInfrastructureServices(this IServiceCollection services) {
+
+            services.AddScoped<IStorageService , AzureBlobStorageService>();
+
         }
 
     }

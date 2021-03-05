@@ -35,8 +35,13 @@ namespace TicketsBasket.Api {
             services.ConfigureCors();
             services.ConfigureIdentityOptions();
             services.AddHttpContextAccessor();
+            services.AddAzureStorageOptions(Configuration);
+            services.AddInfrastructureServices();
 
             services.AddControllers();
+
+            //Adding Swagger
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +51,12 @@ namespace TicketsBasket.Api {
             }
 
             app.UseHttpsRedirection();
+
+            //Adding Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(swagger => {
+                swagger.SwaggerEndpoint("/swagger/v1/swagger.json" , "TicketsBasket API V1.0");
+            });
 
             app.UseRouting();
 
