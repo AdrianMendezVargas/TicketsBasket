@@ -13,13 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{779010
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsBasket.Blazor", "TicketsBasket.Blazor\TicketsBasket.Blazor.csproj", "{3849C1D3-201F-4D76-B7E7-E854FBA8A2E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketsBasket.Repositories", "TicketsBasket.Repositories\TicketsBasket.Repositories.csproj", "{F709B979-70C4-4CC9-8094-503631E31333}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsBasket.Repositories", "TicketsBasket.Repositories\TicketsBasket.Repositories.csproj", "{F709B979-70C4-4CC9-8094-503631E31333}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketsBasket.Services", "TicketsBasket.Services\TicketsBasket.Services.csproj", "{294AC627-18F1-4260-8772-BAA5DDAE89BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsBasket.Services", "TicketsBasket.Services\TicketsBasket.Services.csproj", "{294AC627-18F1-4260-8772-BAA5DDAE89BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketsBasket.Shared", "TicketsBasket.Shared\TicketsBasket.Shared.csproj", "{C5899BD0-470C-4B23-99A5-F6F3E93A79C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsBasket.Shared", "TicketsBasket.Shared\TicketsBasket.Shared.csproj", "{C5899BD0-470C-4B23-99A5-F6F3E93A79C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketsBasket.Infrastructure", "TicketsBasket.Infrastructure\TicketsBasket.Infrastructure.csproj", "{933B6EF7-7081-4F81-B0BA-EE0215C150D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsBasket.Infrastructure", "TicketsBasket.Infrastructure\TicketsBasket.Infrastructure.csproj", "{933B6EF7-7081-4F81-B0BA-EE0215C150D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{A1985610-1BD1-4D46-B0A0-B9F79FDEA368}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsBasket_Functions_ThumpGenerator", "TicketsBasket.Functions.ThumpGenerator\TicketsBasket_Functions_ThumpGenerator.csproj", "{DCCD1194-41DE-4559-95A3-2E731B974512}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{933B6EF7-7081-4F81-B0BA-EE0215C150D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{933B6EF7-7081-4F81-B0BA-EE0215C150D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{933B6EF7-7081-4F81-B0BA-EE0215C150D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCCD1194-41DE-4559-95A3-2E731B974512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCCD1194-41DE-4559-95A3-2E731B974512}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCCD1194-41DE-4559-95A3-2E731B974512}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCCD1194-41DE-4559-95A3-2E731B974512}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +74,7 @@ Global
 		{F709B979-70C4-4CC9-8094-503631E31333} = {F088D766-D333-4751-9EAC-73D78AF65A8A}
 		{294AC627-18F1-4260-8772-BAA5DDAE89BD} = {F088D766-D333-4751-9EAC-73D78AF65A8A}
 		{933B6EF7-7081-4F81-B0BA-EE0215C150D8} = {F088D766-D333-4751-9EAC-73D78AF65A8A}
+		{DCCD1194-41DE-4559-95A3-2E731B974512} = {A1985610-1BD1-4D46-B0A0-B9F79FDEA368}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {940C636C-A4CB-4E0F-BE15-AFC1DFE4FD2E}
