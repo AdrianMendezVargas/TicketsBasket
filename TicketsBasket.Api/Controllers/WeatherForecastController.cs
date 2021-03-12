@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using TicketsBasket.Infrastructure.Options;
 
 namespace TicketsBasket.Api.Controllers {
-    [Authorize]
+    [Authorize(Roles = "Organizer")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase {

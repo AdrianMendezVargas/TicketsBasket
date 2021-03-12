@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using TicketsBasket.Blazor.Infrastructure;
+using System.Security.Claims;
 
 namespace TicketsBasket.Blazor
 {
@@ -27,13 +29,14 @@ namespace TicketsBasket.Blazor
 
             builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("TicketsBasket.Api"));
 
-            builder.Services.AddMsalAuthentication(options =>
-            {
-                builder.Configuration.Bind("AzureAdB2C", options.ProviderOptions.Authentication);
+            builder.Services.AddMsalAuthentication(options => {
+                builder.Configuration.Bind("AzureAdB2C" , options.ProviderOptions.Authentication);
                 //Add my Azure scope
+                options.ProviderOptions.DefaultAccessTokenScopes.Add(builder.Configuration["AzureAdB2C:Scope"]);
                 options.ProviderOptions.DefaultAccessTokenScopes.Add("offline_access");
                 options.ProviderOptions.DefaultAccessTokenScopes.Add("openid");
-            });
+                options.UserOptions.RoleClaim = ClaimTypes.Role;
+            }).AddAccountClaimsPrincipalFactory<AzureADB2CUserFactory>();  //Se agrega la custom ClaimsPrincipalFactory que creamos
 
             await builder.Build().RunAsync();
         }
